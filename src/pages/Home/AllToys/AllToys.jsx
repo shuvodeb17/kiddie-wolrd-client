@@ -8,7 +8,9 @@ import './AllToys.css'
 
 const AllToys = () => {
 
+    const [category, setCategory] = useState('all');
     const [allToys, setAllToys] = useState([])
+
     useEffect(() => {
         fetch(`http://localhost:5000/all-toys`)
             .then(res => res.json())
@@ -16,6 +18,12 @@ const AllToys = () => {
                 setAllToys(data)
             })
     }, [])
+
+    // category button
+    const categoryButton = (buttonName) => {
+        setCategory(buttonName)
+    }
+    console.log(category);
 
 
     return (
@@ -26,27 +34,15 @@ const AllToys = () => {
                     <div className='mt-5 mb-5 mx-auto text-center'>
                         <input type="text" required name='email' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
                     </div>
-                    <Tabs>
-                        <TabList>
-                            <Tab>All</Tab>
-                            <Tab>Sports Car</Tab>
-                            <Tab>Tractor</Tab>
-                            <Tab>Mini fire truck</Tab>
-                        </TabList>
+                    <div className='all-button mb-5'>
+                        <button className={`dynamicButton  ${category == 'all' ? 'active' : ''}`} onClick={() => categoryButton('all')}>All</button>
 
-                        <TabPanel>
-                            <h2>All</h2>
-                        </TabPanel>
-                        <TabPanel>
-                            <h2>Sports Car</h2>
-                        </TabPanel>
-                        <TabPanel>
-                            <h2>Tractor</h2>
-                        </TabPanel>
-                        <TabPanel>
-                            <h2>Mini Fire Truck</h2>
-                        </TabPanel>
-                    </Tabs>
+                        <button className={`dynamicButton  ${category == 'sports' ? 'active' : ''}`} onClick={() => categoryButton('sports')}>Sports Car</button>
+                        
+                        <button className={`dynamicButton  ${category == 'tractor' ? 'active' : ''}`} onClick={() => categoryButton('tractor')}>Tractor</button>
+                        
+                        <button className={`dynamicButton  ${category == 'mini' ? 'active' : ''}`} onClick={() => categoryButton('mini')}>Mini Fire Truck</button>
+                    </div>
                 </div>
                 <div className='grid grid-cols-3 gap-5'>
                     {
