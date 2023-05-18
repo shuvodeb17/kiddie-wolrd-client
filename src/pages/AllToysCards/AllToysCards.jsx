@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AllToysCards = ({ toy }) => {
-    console.log(toy)
+    // console.log(toy)
     const {picture,toyName,seller,price,subCategory,availableQuantity} =toy
     return (
         <div className="card card-compact border">

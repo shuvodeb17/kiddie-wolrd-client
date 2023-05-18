@@ -12,12 +12,13 @@ const AllToys = () => {
     const [allToys, setAllToys] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-toys`)
+        fetch(`http://localhost:5000/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)
             })
-    }, [])
+    }, [category])
+
 
     // category button
     const categoryButton = (buttonName) => {
@@ -37,11 +38,11 @@ const AllToys = () => {
                     <div className='all-button mb-5'>
                         <button className={`dynamicButton  ${category == 'all' ? 'active' : ''}`} onClick={() => categoryButton('all')}>All</button>
 
-                        <button className={`dynamicButton  ${category == 'sports' ? 'active' : ''}`} onClick={() => categoryButton('sports')}>Sports Car</button>
-                        
-                        <button className={`dynamicButton  ${category == 'tractor' ? 'active' : ''}`} onClick={() => categoryButton('tractor')}>Tractor</button>
-                        
-                        <button className={`dynamicButton  ${category == 'mini' ? 'active' : ''}`} onClick={() => categoryButton('mini')}>Mini Fire Truck</button>
+                        <button className={`dynamicButton  ${category == 'Sports Car' ? 'active' : ''}`} onClick={() => categoryButton('Sports Car')}>Sports Car</button>
+
+                        <button className={`dynamicButton  ${category == 'Tractor' ? 'active' : ''}`} onClick={() => categoryButton('Tractor')}>Tractor</button>
+
+                        <button className={`dynamicButton  ${category == 'Fire' ? 'active' : ''}`} onClick={() => categoryButton('Fire')}>Mini Fire Truck</button>
                     </div>
                 </div>
                 <div className='grid grid-cols-3 gap-5'>
