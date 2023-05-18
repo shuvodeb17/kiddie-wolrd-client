@@ -4,7 +4,16 @@ import user from '../../../assets/images/Gallery/gallery1.jpg'
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
-    const {user} = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext)
+
+
+    const logoutHandler = () => {
+        logout()
+            .then()
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
     return (
         <div className='bg-base-100'>
@@ -20,6 +29,7 @@ const Header = () => {
                             <li><Link to='/'>My Toys</Link></li>
                             <li><Link to='/'>Add A Toys</Link></li>
                             <li><Link to='/'>Blogs</Link></li>
+                            <li><Link to='/'>{user?.email}</Link></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
@@ -31,6 +41,7 @@ const Header = () => {
                         <li><Link to='/'>My Toys</Link></li>
                         <li><Link to='/'>Add A Toys</Link></li>
                         <li><Link to='/'>Blogs</Link></li>
+                        <li><Link to='/'>{user?.email}</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
@@ -40,7 +51,12 @@ const Header = () => {
                         </div>
                     </div>
 
-                    <Link to='/login' className="btn">Login</Link>
+                    {
+                        user ?
+                            <Link onClick={logoutHandler} className="btn btn-secondary">Logout</Link>
+                            :
+                            <Link to='/login' className="btn">Login</Link>
+                    }
                 </div>
             </div>
         </div>
