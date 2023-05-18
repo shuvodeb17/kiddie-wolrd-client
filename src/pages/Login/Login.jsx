@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
 import GoogleSignin from '../GoogleSignin/GoogleSignin';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
 
     // loginHandler
     const loginHandler = e => {
@@ -12,6 +15,14 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
