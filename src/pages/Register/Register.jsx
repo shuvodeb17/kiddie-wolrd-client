@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -8,6 +8,8 @@ import { updateProfile } from "firebase/auth";
 const Register = () => {
 
     const { signUp } = useContext(AuthContext);
+    const [success,setSuccess] = useState('')
+    const [error,setError] = useState('')
 
     const registerHandler = e => {
         e.preventDefault()
@@ -23,9 +25,12 @@ const Register = () => {
                 const createdUser = result.user;
                 console.log(createdUser);
                 setUserNameAndPhoto(result.user, name, photo)
+                setError('')
+                setSuccess('User Created Successful')
             })
             .catch(error => {
-                console.log(error.message);
+                setSuccess('')
+                setError(error.message) 
             })
     }
 
@@ -67,7 +72,15 @@ const Register = () => {
                             <p className='text-white'>Photo URL</p>
                             <input type="url" required name='photo' placeholder="Enter Your Photo URL" className="input input-bordered w-full max-w-xs" />
                         </div>
+                        
+                        <div>
+                            <p className="text-red-600">{error}</p>
+                            <p className="text-green-600">{success}</p>
+                        </div>
+
                         <button className="px-5 py-2 rounded-lg bg-[#fff] text-black mt-2">Register</button>
+
+
                         <p className="text-white mt-5">Already have an Account ? <span className='text-[#E63D30]'><Link to='/login'>Sign In</Link></span> </p>
                     </form>
                 </div>

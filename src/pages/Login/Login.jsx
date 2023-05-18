@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
 import GoogleSignin from '../GoogleSignin/GoogleSignin';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,8 @@ import { AuthContext } from '../../providers/AuthProvider';
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
+    const [success, setSuccess] = useState('')
+    const [error, setError] = useState('')
 
     // loginHandler
     const loginHandler = e => {
@@ -19,9 +21,12 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                setError('')
+                setSuccess('Login Successful')
             })
             .catch(error => {
-                console.log(error.message);
+                setSuccess('')
+                setError(error.message)
             })
     }
 
@@ -42,7 +47,15 @@ const Login = () => {
                             <p className='text-white'>Password</p>
                             <input type="password" required name='password' placeholder="Enter Your Password" className="input input-bordered w-full max-w-xs" />
                         </div>
+                        
+                        <div>
+                            <p className="text-red-600">{error}</p>
+                            <p className="text-green-600">{success}</p>
+                        </div>
+
                         <button className="px-5 py-2 rounded-lg bg-[#fff] text-black mt-5">Login</button>
+
+
                         <p className="text-white mt-5">New To KiddieWorld ? <span className='text-[#E63D30]'><Link to='/register'>Sign Up</Link></span> </p>
                         <h2 className="text-white mt-5">Or Login with</h2>
 

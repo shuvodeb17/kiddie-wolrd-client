@@ -45,7 +45,12 @@ const Header = () => {
                 <div className="navbar-end">
                     <div className="avatar">
                         <div style={{ width: '58px' }} className=" mr-5 rounded-full">
-                            <img title={user?.displayName} src={user?.photoURL} className='' />
+                            {
+                                user ?
+                                    <img title={user?.displayName} src={user?.photoURL} className='' />
+                                    :
+                                    ''
+                            }
                         </div>
                     </div>
 
