@@ -29,7 +29,6 @@ const Header = () => {
                             <li><Link to='/'>My Toys</Link></li>
                             <li><Link to='/'>Add A Toys</Link></li>
                             <li><Link to='/'>Blogs</Link></li>
-                            <li><Link to='/'>{user?.email}</Link></li>
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
@@ -41,13 +40,12 @@ const Header = () => {
                         <li><Link to='/'>My Toys</Link></li>
                         <li><Link to='/'>Add A Toys</Link></li>
                         <li><Link to='/'>Blogs</Link></li>
-                        <li><Link to='/'>{user?.email}</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     <div className="avatar">
                         <div style={{ width: '58px' }} className=" mr-5 rounded-full">
-                            <img src={user} className='' />
+                            <img title={user?.displayName} src={user?.photoURL} className='' />
                         </div>
                     </div>
 

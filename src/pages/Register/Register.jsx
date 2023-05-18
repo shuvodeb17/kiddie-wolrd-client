@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import { updateProfile } from "firebase/auth";
+
 
 const Register = () => {
 
@@ -20,11 +22,24 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                setUserNameAndPhoto(result.user, name, photo)
             })
             .catch(error => {
                 console.log(error.message);
             })
+    }
 
+    const setUserNameAndPhoto = (user, name, photo) => {
+        updateProfile(user, {
+            displayName: name,
+            photoURL: photo
+        })
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
