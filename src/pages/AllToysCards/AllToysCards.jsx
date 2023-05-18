@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AllToysCards = ({ toy }) => {
     // console.log(toy)
-    const {picture,toyName,seller,price,subCategory,availableQuantity} =toy
+    const { _id, picture, toyName, seller, price, subCategory, availableQuantity } = toy
     return (
         <div className="card card-compact border">
             <figure><img src={picture} alt="Shoes" /></figure>
@@ -13,7 +14,9 @@ const AllToysCards = ({ toy }) => {
                 <p>Sub Category:{subCategory}</p>
                 <p>Available Quantity:{availableQuantity}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn">View Details</button>
+                    <Link to={`/view-details/${_id}`}>
+                        <button className="btn">View Details</button>
+                    </Link>
                 </div>
             </div>
         </div>
