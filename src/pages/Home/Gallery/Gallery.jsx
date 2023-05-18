@@ -24,11 +24,11 @@ const Gallery = () => {
 
 
     return (
-        <div className='mt-5 mb-7'>
+        <div className='mt-20 mb-7'>
             <div className="container mx-auto">
                 <h1 className='text-3xl font-bold text-center mt-5  mb-7'>Gallery</h1>
                 <div className="App ">
-                    <div className='grid grid-cols-3 gap-5'
+                    <div className='gallery grid grid-cols-3 gap-5'
                         onInit={onInit}
                         speed={500}
                         plugins={[lgThumbnail, lgZoom]}
