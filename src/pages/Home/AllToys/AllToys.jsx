@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css';
-import image1 from '../../assets/images/Gallery/gallery1.jpg'
+import image1 from '../../../assets/images/Gallery/gallery1.jpg'
 import './AllToys.css'
 
 const AllToys = () => {
