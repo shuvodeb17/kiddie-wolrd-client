@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import 'react-tabs/style/react-tabs.css';
 import image1 from '../../../assets/images/Gallery/gallery1.jpg'
+import { AuthContext } from '../../../providers/AuthProvider';
 import AllToysCards from '../../AllToysCards/AllToysCards';
 import './AllToys.css'
 
 const AllToys = () => {
+    const {user} = useContext(AuthContext)
+    // console.log(user.email);
 
     const [category, setCategory] = useState('all');
     const [allToys, setAllToys] = useState([])
@@ -16,6 +19,7 @@ const AllToys = () => {
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)
+                console.log(data)
             })
     }, [category])
 
@@ -45,13 +49,31 @@ const AllToys = () => {
                         <button className={`dynamicButton  ${category == 'Fire' ? 'active' : ''}`} onClick={() => categoryButton('Fire')}>Mini Fire Truck</button>
                     </div>
                 </div>
-                <div className='grid grid-cols-3 gap-5'>
-                    {
-                        allToys.map(toy => <AllToysCards
-                            key={toy._id}
-                            toy={toy}
-                        />)
-                    }
+
+                <div className="overflow-x-auto w-full">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>Seller</th>
+                                <th>Name</th>
+                                <th>Sub Category</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Ratings</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                allToys.map(toy => <AllToysCards
+                                    key={toy._id}
+                                    toy={toy}
+                                    user={user}
+                                />)
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

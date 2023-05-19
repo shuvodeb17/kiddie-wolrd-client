@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 
@@ -20,6 +21,13 @@ const AddToys = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result)
+                if (result.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Added...',
+                        text: 'Toy Added Successful!',
+                    })
+                }
             })
     }
     console.log(watch("example"));
@@ -79,7 +87,7 @@ const AddToys = () => {
                             <p className='text-white'>Quantity</p>
                             <input className="input input-bordered w-full max-w-xs" type="number" placeholder='Quantity' defaultValue="" {...register("availableQuantity")} />
                         </div>
-                        
+
                         <div>
                             <p className='text-white'>Description</p>
                             <input className="input input-bordered w-full max-w-xs" type="text" placeholder='Description' defaultValue="" {...register("description")} />

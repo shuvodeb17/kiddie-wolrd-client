@@ -26,16 +26,11 @@ const Header = () => {
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='/all-toys'>All Toys</Link></li>
-                            {
-                                user && <li><Link to='/my-toys'>My Toys</Link></li>
-                            }
-                            {
-                                user && <li><Link to='/add-toys'>Add A Toys</Link></li>
-                            }
+                            <li><Link to='/my-toys'>My Toys</Link></li>
+                            <li><Link to='/add-toys'>Add A Toys</Link></li>
                             <li><Link to='/'>Blogs</Link></li>
-                            {
-                                user && <li><Link to='/'>User Profile</Link></li>
-                            }
+                            <li><Link to='/'>User Profile</Link></li>
+
                         </ul>
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">KiddieWorld</a>
@@ -44,17 +39,10 @@ const Header = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/all-toys'>All Toys</Link></li>
-                        {
-                            user && <li><Link to='/my-toys'>My Toys</Link></li>
-
-                        }
-                        {
-                            user && <li><Link to='/add-toys'>Add A Toys</Link></li>
-                        }
+                        <li><Link to='/my-toys'>My Toys</Link></li>
+                        <li><Link to='/add-toys'>Add A Toys</Link></li>
                         <li><Link to='/'>Blogs</Link></li>
-                        {
-                            user && <li><Link to='/'>User Profile</Link></li>
-                        }
+                        <li><Link to='/'>User Profile</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">

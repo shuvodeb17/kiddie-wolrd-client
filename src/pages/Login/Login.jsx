@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
 import GoogleSignin from '../GoogleSignin/GoogleSignin';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
@@ -9,6 +9,11 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
+
+
+    const navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     // loginHandler
     const loginHandler = e => {
@@ -22,7 +27,8 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setError('')
-                setSuccess('Login Successful')
+                setSuccess('Login Successful');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setSuccess('')
