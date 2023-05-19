@@ -53,7 +53,7 @@ const Login = () => {
                             <p className='text-white'>Password</p>
                             <input type="password" required name='password' placeholder="Enter Your Password" className="input input-bordered w-full max-w-xs" />
                         </div>
-                        
+
                         <div>
                             <p className="text-red-600">{error}</p>
                             <p className="text-green-600">{success}</p>
@@ -65,8 +65,8 @@ const Login = () => {
                         <p className="text-white mt-5">New To KiddieWorld ? <span className='text-[#E63D30]'><Link to='/register'>Sign Up</Link></span> </p>
                         <h2 className="text-white mt-5">Or Login with</h2>
 
-                        <GoogleSignin />
                     </form>
+                    <GoogleSignin />
                 </div>
             </div>
         </div>

@@ -25,7 +25,6 @@ const ViewDetails = () => {
                             <h1 className="">Rating: {ratings}</h1>
                             <h1 className="">Available quantity: {availableQuantity}</h1>
                             <h1 className="">Description: {description}</h1>
-                            <button className="btn btn-primary mt-3">Add Toy</button>
                         </div>
                     </div>
                 </div>
