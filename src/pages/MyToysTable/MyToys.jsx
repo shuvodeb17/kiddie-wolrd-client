@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
 import Update from '../Update/Update';
 
 
-const MyToys = ({ singleToy }) => {
+const MyToys = ({ singleToy, handleDelete }) => {
 
     const { _id, picture, toyName, price, ratings, subCategory, seller, availableQuantity } = singleToy;
 
-    const handleDelete = id => {
-        console.log(id);
-    }
+
+
 
     return (
         <tr>

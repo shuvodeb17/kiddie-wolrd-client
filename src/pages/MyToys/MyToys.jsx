@@ -15,6 +15,18 @@ const MyToys = () => {
             })
     }, [user])
 
+    const handleDelete = id => {
+        fetch(`http://localhost:5000/toyRemove/${id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const check = myToys.filter(toy => toy._id !== id);
+                setMyToys(check)
+            })
+    }
+
     return (
         <div className='mt-5'>
             <div className="container mx-auto">
@@ -35,6 +47,7 @@ const MyToys = () => {
                                 myToys?.map(singleToy => <MyToysTable
                                     key={singleToy._id}
                                     singleToy={singleToy}
+                                    handleDelete={handleDelete}
                                 />)
                             }
                         </tbody>

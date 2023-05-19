@@ -8,27 +8,37 @@ import AllToysCards from '../../AllToysCards/AllToysCards';
 import './AllToys.css'
 
 const AllToys = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // console.log(user.email);
 
     const [category, setCategory] = useState('all');
     const [allToys, setAllToys] = useState([])
+    const [searchText, setSearchText] = useState('');
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)
-                console.log(data)
             })
     }, [category])
+
+    const searchButtonHandler = () => {
+        fetch(`http://localhost:5000/search-toys/${searchText}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    setAllToys(data)
+                }
+            })
+    }
 
 
     // category button
     const categoryButton = (buttonName) => {
         setCategory(buttonName)
     }
-    console.log(category);
 
 
     return (
@@ -37,7 +47,8 @@ const AllToys = () => {
                 <h1 className='text-3xl font-bold mt-5 mb-7 text-center'>All Toys</h1>
                 <div className='all-category'>
                     <div className='mt-5 mb-5 mx-auto text-center'>
-                        <input type="text" required name='email' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
+                        <input onChange={(e) => setSearchText(e.target.value)} type="text" required name='email' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
+                        <button onClick={searchButtonHandler} className="btn btn-primary ms-5">Search</button>
                     </div>
                     <div className='all-button mb-5'>
                         <button className={`dynamicButton  ${category == 'all' ? 'active' : ''}`} onClick={() => categoryButton('all')}>All</button>

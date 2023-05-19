@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const AllToysCards = ({ toy, user }) => {
-    console.log(user?.email);
 
     const { _id, picture, toyName, seller, price, ratings, subCategory, availableQuantity } = toy;
+
 
     const addToysHandler = () => {
         fetch(`http://localhost:5000/added-toys`, {
