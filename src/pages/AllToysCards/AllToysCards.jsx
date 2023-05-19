@@ -6,7 +6,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 const AllToysCards = ({ toy, user }) => {
     console.log(user?.email);
 
-    const { _id, picture, toyName, seller, sellerEmail, price, ratings, subCategory, availableQuantity } = toy;
+    const { _id, picture, toyName, seller, price, ratings, subCategory, availableQuantity } = toy;
 
     const addToysHandler = () => {
         fetch(`http://localhost:5000/added-toys`, {

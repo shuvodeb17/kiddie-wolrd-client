@@ -1,10 +1,16 @@
 import React from 'react';
 import { PencilSquareIcon, TrashIcon } from '@heroicons/react/24/solid'
+import { Link } from 'react-router-dom';
+import Update from '../Update/Update';
 
 
 const MyToys = ({ singleToy }) => {
 
-    const { picture, toyName, price, ratings, subCategory, seller, availableQuantity } = singleToy;
+    const { _id, picture, toyName, price, ratings, subCategory, seller, availableQuantity } = singleToy;
+
+    const handleDelete = id => {
+        console.log(id);
+    }
 
     return (
         <tr>
@@ -32,11 +38,14 @@ const MyToys = ({ singleToy }) => {
                 Ratings: {ratings}
             </td>
             <th>
-                <button className="btn btn-ghost btn-xs">
-                    <PencilSquareIcon className="h-6 w-6 text-blue-500" />
-                </button>
-                <button className="btn btn-ghost btn-xs">
-                    <TrashIcon className="h-6 w-6 text-blue-500" />
+                <Link to={`/updated/${_id}`}>
+                    <button className="bg-gray-200 p-2 rounded-full me-2">
+                        <PencilSquareIcon className="h-6 w-6 text-blue-500" />
+                    </button>
+                </Link>
+
+                <button onClick={() => handleDelete(_id)} className="bg-gray-200 p-2 rounded-full">
+                    <TrashIcon className="h-6 w-6 text-red-500" />
                 </button>
             </th>
         </tr>
