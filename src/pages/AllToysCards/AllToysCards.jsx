@@ -5,8 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const AllToysCards = ({ toy, user }) => {
-    const { _id, picture, toyName, sellerEmail, email, seller, price, ratings, subCategory, availableQuantity } = toy;
-    console.log(toy);
+    const { _id, picture, toyName,name, sellerEmail, email, seller, price, ratings, subCategory, availableQuantity } = toy;
 
     const addHandler = () => {
         if (user) {
@@ -60,7 +59,7 @@ const AllToysCards = ({ toy, user }) => {
                 </div>
             </td>
             <td>
-                {toyName} <br />
+                {name} <br />
                 {sellerEmail}
                 {email}
             </td>

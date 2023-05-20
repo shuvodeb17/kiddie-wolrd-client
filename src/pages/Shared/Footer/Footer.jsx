@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from '../../../assets/images/header/vite.png'
-import { FaFacebookSquare, FaInstagram ,FaTwitter } from 'react-icons/fa';
+import { FaFacebookSquare, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 
 const Footer = () => {
@@ -20,11 +21,11 @@ const Footer = () => {
                         <a className="link link-hover">Advertisement</a>
                     </div>
                     <div>
-                        <span className="footer-title">Company</span>
-                        <a className="link link-hover">About us</a>
-                        <a className="link link-hover">Contact</a>
-                        <a className="link link-hover">Jobs</a>
-                        <a className="link link-hover">Press kit</a>
+                        <span className="footer-title">Links</span>
+                        <Link to='/' className="link link-hover">Home</Link>
+                        <Link to='/all-toys' className="link link-hover">All Toys</Link>
+                        <Link to='/my-toys' className="link link-hover">My Toys</Link>
+                        <Link to='/user-profile' className="link link-hover">Profile</Link>
                     </div>
                     <div>
                         <span className="footer-title">Social</span>
@@ -41,6 +42,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </footer>
+                <p className="text-center"> &copy; All Rights Reserved by <span className="text-sky-600">KiddieWorld 2.0</span> </p>
             </div>
         </div>
     );

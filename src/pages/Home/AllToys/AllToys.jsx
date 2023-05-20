@@ -13,6 +13,7 @@ const AllToys = () => {
     const [allToys, setAllToys] = useState([])
     const [searchText, setSearchText] = useState('');
     useTitle('All Toys')
+    console.log(searchText)
 
 
     useEffect(() => {
@@ -54,7 +55,7 @@ const AllToys = () => {
                 <h1 className='text-3xl font-bold mt-5 mb-7 text-center'>Shop By Category: {allToys.length}</h1>
                 <div className='all-category'>
                     <div className='mt-5 mb-5 mx-auto text-center'>
-                        <input onChange={(e) => setSearchText(e.target.value)} type="text" required name='email' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
+                        <input onChange={(e) => setSearchText(e.target.value)} type="text" required name='name' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
                         <button onClick={searchButtonHandler} className="btn btn-primary ms-5">Search</button>
                     </div>
                     <div className='all-button mb-5'>
@@ -64,7 +65,7 @@ const AllToys = () => {
 
                         <button className={`dynamicButton  ${category == 'Tractor' ? 'active' : ''}`} onClick={() => categoryButton('Tractor')}>Tractor</button>
 
-                        <button className={`dynamicButton  ${category == 'Fire' ? 'active' : ''}`} onClick={() => categoryButton('Fire')}>Mini Fire Truck</button>
+                        <button className={`dynamicButton  ${category == 'Fire' ? 'active' : ''}`} onClick={() => categoryButton('Fire')}>Fire Truck</button>
                     </div>
                 </div>
 

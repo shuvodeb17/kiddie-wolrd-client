@@ -47,13 +47,13 @@ const AddToys = () => {
                         </div>
 
                         <div>
-                            <p className='text-white'>Name</p>
-                            <input className="input input-bordered w-full max-w-xs" placeholder='Name' defaultValue={user?.displayName} {...register("name")} />
+                            <p className='text-white'>Toy Name</p>
+                            <input className="input input-bordered w-full max-w-xs" placeholder='Toy Name' defaultValue='' {...register("name")} />
                         </div>
 
                         <div>
-                            <p className='text-white'>Toy Name</p>
-                            <input className="input input-bordered w-full max-w-xs" placeholder='Toy Name' defaultValue="" {...register("toyName")} />
+                            <p className='text-white'>Name</p>
+                            <input className="input input-bordered w-full max-w-xs" placeholder='Toy Name' defaultValue={user?.displayName} {...register("toyName")} />
                         </div>
 
                         <div>

@@ -11,7 +11,7 @@ const AboutUs = () => {
 
     return (
         <div>
-            <div className="container mx-auto h-screen">
+            <div className="container mx-auto lg:h-screen">
                 <h1 className='mb-5 tracking-normal text-3xl font-bold mt-10 text-center '>About Us</h1>
                 <div className='grid lg:grid-cols-2 lg:px-0 px-5 gap-5'>
                     <div data-aos="flip-up" className='flex flex-col justify-center leading-relaxed'>

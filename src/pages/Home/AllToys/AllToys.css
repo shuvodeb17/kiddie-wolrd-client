@@ -13,7 +13,15 @@
   outline: none;
 }
 
-.active{
-    background-color: #c61c55;
-    color: #fff;
+.active {
+  background-color: #c61c55;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .all-button {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 4px;
+  }
 }
