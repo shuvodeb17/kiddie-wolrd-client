@@ -34,6 +34,7 @@ const Update = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
+                        console.log(data.price)
                         if (data.modifiedCount > 0) {
                             Swal.fire('Saved!', '', 'success')
                         }
@@ -92,7 +93,7 @@ const Update = () => {
 
                         <div>
                             <p className='text-white'>Price</p>
-                            <input className="input input-bordered w-full max-w-xs" type="number" placeholder='Price' defaultValue={price} {...register("price")} />
+                            <input className="input input-bordered w-full max-w-xs" type="number" placeholder='Price' defaultValue={parseInt(price)} {...register("price")} />
                         </div>
 
                         <div>
