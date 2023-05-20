@@ -1,6 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import contactImage from '../../../assets/images/Contact/contact.png'
 import { AuthContext } from '../../../providers/AuthProvider';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const ContactUs = () => {
     const { user } = useContext(AuthContext);
@@ -9,11 +12,15 @@ const ContactUs = () => {
     const handleSubmit = e => {
         e.preventDefault()
     }
+    useEffect(() => {
+        AOS.init();
+      }, [])
+
 
     return (
         <div>
             <h2 className="text-4xl font-bold mt-14 text-center">Contact Us</h2>
-            <div className='grid lg:grid-cols-2 gap-5'>
+            <div className='grid lg:grid-cols-2 gap-5' data-aos="zoom-in">
                 <div className='flex justify-center'>
                     <img src={contactImage} alt="" />
                 </div>

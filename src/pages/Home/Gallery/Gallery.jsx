@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Gallery.css'
 import image1 from '../../../assets/images/Gallery/gallery1.jpg';
 import image2 from '../../../assets/images/Gallery/gallery2.png';
@@ -8,7 +8,8 @@ import image5 from '../../../assets/images/Gallery/gallery5.png';
 import image6 from '../../../assets/images/Gallery/gallery6.png';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Gallery = () => {
 
@@ -30,12 +31,17 @@ const Gallery = () => {
         }
     };
 
+    useEffect(() => {
+        AOS.init();
+    }, [])
 
     return (
         <div className='mt-20 mb-7'>
             <div className="container mx-auto">
                 <h1 className='text-3xl font-bold text-center mt-5 mb-7'>Gallery</h1>;
-                <div>
+                <div data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500">
                     <Carousel responsive={responsive}>
                         <div>
                             <img src={image1} alt="" />

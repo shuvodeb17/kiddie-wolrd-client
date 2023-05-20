@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Main from "../Layout/Main";
 import AddToys from "../pages/AddToys/AddToys";
+import Blogs from "../pages/Blogs/Blogs";
 import Error from "../pages/Error/Error";
 import AllToys from "../pages/Home/AllToys/AllToys";
 import Home from "../pages/Home/Home/Home";
@@ -51,18 +52,23 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://kiddie-world-server.vercel.app/toySingle/${params.id}`)
             },
             {
+                path: 'blogs',
+                element: <Blogs />
+            },
+            {
                 path: 'login',
                 element: <Login />
             },
             {
                 path: 'register',
                 element: <Register />
-            }, {
-                path: '*',
-                element: <Error />
             }
         ]
     },
+    {
+        path: '*',
+        element: <Error />
+    }
 ]);
 
 export default router

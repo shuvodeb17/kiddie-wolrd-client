@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import './UserProfile.css';
 import useTitle from '../../hook/useTitle.js'
@@ -7,6 +7,8 @@ const UserProfile = () => {
 
     const { user } = useContext(AuthContext)
     useTitle('Profile')
+
+
 
     return (
         <div>
