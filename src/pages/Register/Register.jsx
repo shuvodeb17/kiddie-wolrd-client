@@ -3,6 +3,7 @@ import loginImage from '../../assets/images/Login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from "firebase/auth";
+import useTitle from '../../hook/useTitle';
 
 
 const Register = () => {
@@ -10,6 +11,7 @@ const Register = () => {
     const { signUp } = useContext(AuthContext);
     const [success,setSuccess] = useState('')
     const [error,setError] = useState('')
+    useTitle('Register')
 
     const registerHandler = e => {
         e.preventDefault()
@@ -49,8 +51,8 @@ const Register = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-2'>
-                <div className='bg-[#A06DF2] p-10'>
+            <div className='grid lg:grid-cols-2'>
+                <div className='bg-[#A06DF2] p-10 lg:block hidden'>
                     <img className='w-full' src={loginImage} alt="" />
                 </div>
                 <div className='p-10 bg-[#27343E] text-white flex justify-center flex-col'>

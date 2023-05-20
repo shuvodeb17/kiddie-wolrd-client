@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import useTitle from '../../../hook/useTitle';
 // import 'react-tabs/style/react-tabs.css';
-import image1 from '../../../assets/images/Gallery/gallery1.jpg'
 import { AuthContext } from '../../../providers/AuthProvider';
 import AllToysCards from '../../AllToysCards/AllToysCards';
-import './AllToys.css'
+import './AllToys.css';
 
 const AllToys = () => {
     const { user } = useContext(AuthContext)
@@ -14,10 +12,11 @@ const AllToys = () => {
     const [category, setCategory] = useState('all');
     const [allToys, setAllToys] = useState([])
     const [searchText, setSearchText] = useState('');
+    useTitle('All Toys')
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/all-toys/${category}`)
+        fetch(`https://kiddie-world-server.vercel.app/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)
@@ -25,7 +24,7 @@ const AllToys = () => {
     }, [category])
 
     const searchButtonHandler = () => {
-        fetch(`http://localhost:5000/search-toys/${searchText}`)
+        fetch(`https://kiddie-world-server.vercel.app/search-toys/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 if (data) {

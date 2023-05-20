@@ -1,35 +1,37 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../providers/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const AllToysCards = ({ toy, user }) => {
-
     const { _id, picture, toyName, seller, price, ratings, subCategory, availableQuantity } = toy;
 
-
-    const addToysHandler = () => {
-        fetch(`http://localhost:5000/added-toys`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ picture, toyName, seller, price, ratings, subCategory, availableQuantity, email: user?.email })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.insertedId) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Added...',
-                        text: 'Toy added Successful!',
-                    })
-
-                }
+    const addHandler = () => {
+        if (user) {
+            fetch(`https://kiddie-world-server.vercel.app/added-toys`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ picture, toyName, seller, price, ratings, subCategory, availableQuantity, email: user?.email })
             })
-    }
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Added...',
+                            text: 'Toy added Successful!',
+                        })
 
+                    }
+                })
+        } else {
+            toast('You Login First');
+        }
+    }
 
     return (
         <tr>
@@ -63,7 +65,8 @@ const AllToysCards = ({ toy, user }) => {
                 <Link to={`/view-details/${_id}`}>
                     <button className="btn btn-ghost btn-xs">View Details</button>
                 </Link>
-                <button onClick={addToysHandler} className="btn btn-ghost btn-xs">Add Toys</button>
+                <button onClick={addHandler} className="btn btn-ghost btn-xs">Add Toys</button>
+                <Toaster />
             </th>
         </tr>
 

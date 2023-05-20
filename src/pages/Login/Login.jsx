@@ -3,12 +3,14 @@ import loginImage from '../../assets/images/Login/login.svg'
 import GoogleSignin from '../GoogleSignin/GoogleSignin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import useTitle from '../../hook/useTitle';
 
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
     const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
+    useTitle('Login')
 
 
     const navigate = useNavigate()
@@ -38,8 +40,8 @@ const Login = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-2'>
-                <div className='bg-[#A06DF2] p-10'>
+            <div className='grid lg:grid-cols-2'>
+                <div className='bg-[#A06DF2] p-10 lg:block hidden'>
                     <img className='w-full' src={loginImage} alt="" />
                 </div>
                 <div className='p-10 bg-[#27343E] text-white flex justify-center flex-col'>

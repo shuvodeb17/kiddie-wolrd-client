@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import useTitle from '../../hook/useTitle';
 import { AuthContext } from '../../providers/AuthProvider';
 
 
 const AddToys = () => {
 
     const { user } = useContext(AuthContext)
+    useTitle('Add A Toys')
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
-        fetch(`http://localhost:5000/all-toys-insert`, {
+        fetch(`https://kiddie-world-server.vercel.app/all-toys-insert`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -37,8 +39,8 @@ const AddToys = () => {
             <div className="container mx-auto">
                 <h1 className='text-3xl text-center font-bold text-white pt-11 pb-11'>Add A toys</h1>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='grid grid-cols-3 gap-5'>
+                <form onSubmit={handleSubmit(onSubmit)} className='mx-auto text-center'>
+                    <div className='grid lg:grid-cols-3 gap-5'>
                         <div>
                             <p className='text-white'>Photo URL</p>
                             <input type='url' className="input input-bordered w-full max-w-xs" placeholder='Picture URL' defaultValue="" {...register("picture")} />

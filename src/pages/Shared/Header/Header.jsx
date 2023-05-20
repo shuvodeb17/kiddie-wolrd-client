@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import user from '../../../assets/images/Gallery/gallery1.jpg'
 import { AuthContext } from '../../../providers/AuthProvider';
+import logo from '../../../assets/images/header/vite.png'
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext)
@@ -29,11 +30,15 @@ const Header = () => {
                             <li><Link to='/my-toys'>My Toys</Link></li>
                             <li><Link to='/add-toys'>Add A Toys</Link></li>
                             <li><Link to='/'>Blogs</Link></li>
-                            <li><Link to='/'>User Profile</Link></li>
-
+                            {
+                                user && <li><Link to='/user-profile'>User Profile</Link></li>
+                            }
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">KiddieWorld</a>
+                    {/* <a className="btn btn-ghost normal-case text-xl">KiddieWorld</a> */}
+                    <a className="btn btn-ghost normal-case text-xl">
+                        <img className='w-44' src={logo} alt="" />
+                    </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -42,7 +47,10 @@ const Header = () => {
                         <li><Link to='/my-toys'>My Toys</Link></li>
                         <li><Link to='/add-toys'>Add A Toys</Link></li>
                         <li><Link to='/'>Blogs</Link></li>
-                        <li><Link to='/'>User Profile</Link></li>
+                        {
+                            user && <li><Link to='/user-profile'>User Profile</Link></li>
+
+                        }
                     </ul>
                 </div>
                 <div className="navbar-end">
