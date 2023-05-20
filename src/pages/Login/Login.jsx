@@ -4,11 +4,12 @@ import GoogleSignin from '../GoogleSignin/GoogleSignin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import useTitle from '../../hook/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
-    const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
     useTitle('Login')
 
@@ -29,14 +30,14 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 setError('')
-                setSuccess('Login Successful');
+                toast('Login Successful');
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                setSuccess('')
                 setError(error.message)
             })
     }
+
 
     return (
         <div>
@@ -58,10 +59,11 @@ const Login = () => {
 
                         <div>
                             <p className="text-red-600">{error}</p>
-                            <p className="text-green-600">{success}</p>
                         </div>
 
                         <button className="px-5 py-2 rounded-lg bg-[#fff] text-black mt-5">Login</button>
+                        <Toaster />
+
 
 
                         <p className="text-white mt-5">New To KiddieWorld ? <span className='text-[#E63D30]'><Link to='/register'>Sign Up</Link></span> </p>

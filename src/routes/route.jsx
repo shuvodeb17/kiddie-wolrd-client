@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Main from "../Layout/Main";
 import AddToys from "../pages/AddToys/AddToys";
+import Error from "../pages/Error/Error";
 import AllToys from "../pages/Home/AllToys/AllToys";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -56,6 +57,9 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register />
+            }, {
+                path: '*',
+                element: <Error />
             }
         ]
     },

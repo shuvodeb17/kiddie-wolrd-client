@@ -51,6 +51,7 @@ const MyToys = () => {
     return (
         <div className='mt-5'>
             <div className="container mx-auto">
+                <h1 className="mb-5 text-3xl font-bold text-center">My Toys: {myToys?.length}</h1>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         {/* head */}

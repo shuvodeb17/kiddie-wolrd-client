@@ -1,16 +1,21 @@
 import React, { useContext, useState } from 'react';
 import loginImage from '../../assets/images/Login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { updateProfile } from "firebase/auth";
 import useTitle from '../../hook/useTitle';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 const Register = () => {
 
     const { signUp } = useContext(AuthContext);
-    const [success,setSuccess] = useState('')
-    const [error,setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     useTitle('Register')
 
     const registerHandler = e => {
@@ -28,11 +33,12 @@ const Register = () => {
                 console.log(createdUser);
                 setUserNameAndPhoto(result.user, name, photo)
                 setError('')
-                setSuccess('User Created Successful')
+                navigate(from, { replace: true });
+                toast('Registration Successful');
             })
             .catch(error => {
                 setSuccess('')
-                setError(error.message) 
+                setError(error.message)
             })
     }
 
@@ -74,13 +80,14 @@ const Register = () => {
                             <p className='text-white'>Photo URL</p>
                             <input type="url" required name='photo' placeholder="Enter Your Photo URL" className="input input-bordered w-full max-w-xs" />
                         </div>
-                        
+
                         <div>
                             <p className="text-red-600">{error}</p>
                             <p className="text-green-600">{success}</p>
                         </div>
 
                         <button className="px-5 py-2 rounded-lg bg-[#fff] text-black mt-2">Register</button>
+                        <Toaster />
 
 
                         <p className="text-white mt-5">Already have an Account ? <span className='text-[#E63D30]'><Link to='/login'>Sign In</Link></span> </p>

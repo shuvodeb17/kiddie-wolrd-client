@@ -19,7 +19,7 @@ const AllToys = () => {
         fetch(`https://kiddie-world-server.vercel.app/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
-                setAllToys(data)
+                setAllToys(data.slice(0, 20))
             })
     }, [category])
 
@@ -33,6 +33,14 @@ const AllToys = () => {
             })
     }
 
+    // seeMoreButtonHandler
+    const seeMoreButtonHandler = () => {
+        fetch(`https://kiddie-world-server.vercel.app/all-toys/${category}`)
+            .then(res => res.json())
+            .then(data => {
+                setAllToys(data)
+            })
+    }
 
     // category button
     const categoryButton = (buttonName) => {
@@ -43,7 +51,7 @@ const AllToys = () => {
     return (
         <div className='mt-20'>
             <div className="container mx-auto">
-                <h1 className='text-3xl font-bold mt-5 mb-7 text-center'>All Toys</h1>
+                <h1 className='text-3xl font-bold mt-5 mb-7 text-center'>Shop By Category: {allToys.length}</h1>
                 <div className='all-category'>
                     <div className='mt-5 mb-5 mx-auto text-center'>
                         <input onChange={(e) => setSearchText(e.target.value)} type="text" required name='email' placeholder="Search your toys" className="input input-bordered w-full max-w-xs" />
@@ -60,13 +68,13 @@ const AllToys = () => {
                     </div>
                 </div>
 
-                <div className="overflow-x-auto w-full">
+                <div className="overflow-x-auto w-full text-center">
                     <table className="table w-full">
                         {/* head */}
                         <thead>
                             <tr>
                                 <th>Seller</th>
-                                <th>Name</th>
+                                <th>Name / Email</th>
                                 <th>Sub Category</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
@@ -84,6 +92,7 @@ const AllToys = () => {
                             }
                         </tbody>
                     </table>
+                    <button className="btn btn-primary mx-auto text-center" onClick={seeMoreButtonHandler}>See More</button>
                 </div>
             </div>
         </div>

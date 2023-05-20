@@ -10,8 +10,8 @@ const UserProfile = () => {
 
     return (
         <div>
-            <div className="container mx-auto h-80">
-                <div className='profile-wrapper w-2/6 bg-base-100 shadow-xl p-5 mt-5 mb-5 rounded-lg mx-auto'>
+            <div className="container mx-auto h-80 lg:px-0 px-5">
+                <div className='profile-wrapper lg:w-2/6 bg-base-100 shadow-xl p-5 mt-5 mb-5 rounded-lg mx-auto'>
                     <div>
                         <h1 className="text-3xl font-bold">My Profile</h1>
                         <p>{user?.displayName}</p>

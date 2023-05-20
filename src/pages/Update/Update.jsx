@@ -55,7 +55,7 @@ const Update = () => {
                 <h1 className='text-3xl text-center font-bold text-white pt-11 pb-11'>Update Toys</h1>
 
                 <form onSubmit={handleSubmit(onUpdate)}>
-                    <div className='grid grid-cols-3 gap-5'>
+                    <div className='grid lg:grid-cols-3 gap-5 mx-auto text-center'>
                         <div>
                             <p className='text-white'>Photo URL</p>
                             <input type='url' className="input input-bordered w-full max-w-xs" placeholder='Picture URL' defaultValue={picture} {...register("picture")} />

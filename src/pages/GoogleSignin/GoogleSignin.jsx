@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 const GoogleSignin = () => {
@@ -19,6 +21,7 @@ const GoogleSignin = () => {
             .then(result => {
                 const signIn = result.user;
                 console.log(signIn);
+                toast('Sign in with google Successful');
                 navigate(from, { replace: true });
             })
             .catch(error => {
@@ -32,6 +35,7 @@ const GoogleSignin = () => {
                 <FaGoogle />
                 Sign in with Google
             </button>
+            <Toaster />
         </div>
     );
 };

@@ -5,7 +5,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const AllToysCards = ({ toy, user }) => {
-    const { _id, picture, toyName, seller, price, ratings, subCategory, availableQuantity } = toy;
+    const { _id, picture, toyName, sellerEmail, email, seller, price, ratings, subCategory, availableQuantity } = toy;
+    console.log(toy);
 
     const addHandler = () => {
         if (user) {
@@ -33,6 +34,17 @@ const AllToysCards = ({ toy, user }) => {
         }
     }
 
+    // view details button 
+    const viewDetailsHandler = () => {
+        if (!user) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You have to log in first to View Details',
+            })
+        }
+    }
+
     return (
         <tr>
             <td>
@@ -48,7 +60,9 @@ const AllToysCards = ({ toy, user }) => {
                 </div>
             </td>
             <td>
-                {toyName}
+                {toyName} <br />
+                {sellerEmail}
+                {email}
             </td>
             <td>
                 {subCategory}
@@ -63,12 +77,13 @@ const AllToysCards = ({ toy, user }) => {
             <td>{ratings}</td>
             <th>
                 <Link to={`/view-details/${_id}`}>
-                    <button className="btn btn-ghost btn-xs">View Details</button>
+                    <button onClick={viewDetailsHandler} className="btn btn-ghost btn-xs">View Details</button>
                 </Link>
                 <button onClick={addHandler} className="btn btn-ghost btn-xs">Add Toys</button>
                 <Toaster />
             </th>
         </tr>
+        
 
     );
 };
