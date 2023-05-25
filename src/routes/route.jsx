@@ -44,12 +44,12 @@ const router = createBrowserRouter([
             {
                 path: 'view-details/:id',
                 element: <PrivateRoute><ViewDetails /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://kiddie-world-server.vercel.app/toy/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
             },
             {
                 path: 'updated/:id',
                 element: <Update />,
-                loader: ({ params }) => fetch(`https://kiddie-world-server.vercel.app/toySingle/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/toySingle/${params.id}`)
             },
             {
                 path: 'blogs',

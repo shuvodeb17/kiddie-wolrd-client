@@ -13,7 +13,7 @@ const AddToys = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
-        fetch(`https://kiddie-world-server.vercel.app/all-toys-insert`, {
+        fetch(`http://localhost:5000/all-toys-insert`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -34,6 +34,34 @@ const AddToys = () => {
     }
     console.log(watch("example"));
 
+
+    const addHandler = () => {
+        if (user) {
+            fetch(`http://localhost:5000/added-toys`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ picture, toyName, seller, price, ratings, subCategory, availableQuantity, email: user?.email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Added...',
+                            text: 'Toy added Successful!',
+                        })
+
+                    }
+                })
+        } else {
+            toast('You Login First');
+        }
+    }
+
+
     return (
         <div className='bg-[#445760]'>
             <div className="container mx-auto">
@@ -53,7 +81,7 @@ const AddToys = () => {
 
                         <div>
                             <p className='text-white'>Name</p>
-                            <input className="input input-bordered w-full max-w-xs" placeholder='Toy Name' defaultValue={user?.displayName} {...register("toyName")} />
+                            <input className="input input-bordered w-full max-w-xs" placeholder='Toy Name' value={user?.displayName} {...register("toyName")} />
                         </div>
 
                         <div>
@@ -63,7 +91,7 @@ const AddToys = () => {
 
                         <div>
                             <p className='text-white'>Seller Email</p>
-                            <input className="input input-bordered w-full max-w-xs" type='email' placeholder='Seller Email' defaultValue={user?.email} {...register("sellerEmail")} />
+                            <input className="input input-bordered w-full max-w-xs" type='email' placeholder='Seller Email' value={user?.email} {...register("email")} />
                         </div>
 
                         <div>
@@ -96,7 +124,7 @@ const AddToys = () => {
                         </div>
 
                     </div>
-                    <input type="submit" className='btn mx-auto text-center mb-5 mt-5 btn-primary' />
+                    <input onClick={addHandler} type="submit" className='btn mx-auto text-center mb-5 mt-5 btn-primary' />
                 </form>
 
             </div>

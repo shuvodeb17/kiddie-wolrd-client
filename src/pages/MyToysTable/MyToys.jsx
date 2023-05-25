@@ -6,7 +6,7 @@ import Update from '../Update/Update';
 
 const MyToys = ({ singleToy, handleDelete }) => {
 
-    const { _id, picture, toyName, price, ratings, subCategory, seller, availableQuantity } = singleToy;
+    const { _id, picture, toyName, name, price, ratings, subCategory, seller,email, availableQuantity } = singleToy;
 
 
 
@@ -21,8 +21,9 @@ const MyToys = ({ singleToy, handleDelete }) => {
                         </div>
                     </div>
                     <div>
-                        <div className="font-bold">Toy Name: {toyName} </div>
+                        <div className="font-bold">Toy Name: {name} </div>
                         <div className="text-sm opacity-50">Price: ${price} </div>
+                        <div className="text-sm opacity-50">Email: {email} </div>
                     </div>
                 </div>
             </td>

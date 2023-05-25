@@ -17,7 +17,7 @@ const AllToys = () => {
 
 
     useEffect(() => {
-        fetch(`https://kiddie-world-server.vercel.app/all-toys/${category}`)
+        fetch(`http://localhost:5000/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data.slice(0, 20))
@@ -25,7 +25,7 @@ const AllToys = () => {
     }, [category])
 
     const searchButtonHandler = () => {
-        fetch(`https://kiddie-world-server.vercel.app/search-toys/${searchText}`)
+        fetch(`http://localhost:5000/search-toys/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 if (data) {
@@ -36,7 +36,7 @@ const AllToys = () => {
 
     // seeMoreButtonHandler
     const seeMoreButtonHandler = () => {
-        fetch(`https://kiddie-world-server.vercel.app/all-toys/${category}`)
+        fetch(`http://localhost:5000/all-toys/${category}`)
             .then(res => res.json())
             .then(data => {
                 setAllToys(data)

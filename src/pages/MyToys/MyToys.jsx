@@ -11,7 +11,7 @@ const MyToys = () => {
     const { user } = useContext(AuthContext)
     const [myToys, setMyToys] = useState()
     useEffect(() => {
-        fetch(`https://kiddie-world-server.vercel.app/added-toys?email=${user?.email}`)
+        fetch(`http://localhost:5000/added-toys?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyToys(data)
@@ -29,7 +29,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://kiddie-world-server.vercel.app/toyRemove/${id}`, {
+                fetch(`http://localhost:5000/toyRemove/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
